@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
@@ -19,8 +20,12 @@ const Header = () => {
         </nav>
 
         <div className="nav-actions hidden md:flex items-center gap-4">
-          <button className="btn-secondary">Sign In</button>
-          <button className="btn-primary">Start Free</button>
+          <Link to="/signin" className="btn-secondary" style={{ textDecoration: 'none' }}>
+            Sign In
+          </Link>
+          <Link to="/signup" className="btn-primary" style={{ textDecoration: 'none' }}>
+            Start Free
+          </Link>
         </div>
 
         <button 
@@ -40,8 +45,12 @@ const Header = () => {
             <a href="#pricing" className="body-medium">Pricing</a>
             <a href="#comparison" className="body-medium">Compare</a>
             <div className="flex flex-col gap-2 mt-4">
-              <button className="btn-secondary">Sign In</button>
-              <button className="btn-primary">Start Free</button>
+              <Link to="/signin" className="btn-secondary" style={{ textDecoration: 'none', textAlign: 'center' }}>
+                Sign In
+              </Link>
+              <Link to="/signup" className="btn-primary" style={{ textDecoration: 'none', textAlign: 'center' }}>
+                Start Free
+              </Link>
             </div>
           </nav>
         </div>
