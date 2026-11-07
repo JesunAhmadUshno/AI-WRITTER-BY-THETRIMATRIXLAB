@@ -24,7 +24,7 @@ Reviewed 7 Nov 2026 on branch `site/live-dashboard`. Every count below is assert
 
 | Area | Finding | Status |
 |---|---|---|
-| Auth | `signIn` accepts any non-empty email and password and writes the user to `localStorage`. It never sets `verified`, and `ProtectedRoute` requires `user.verified`, so the email path is bounced from `/dashboard` back to `/signin`. Google and Twitter paths are hard-coded users with `verified: true`. The verification code is the constant `123456`. | Flagged, not changed: fixing it means choosing an auth design. Needs a real identity provider or server sessions. |
+| Auth | `signIn` accepts any non-empty email and password and writes the user to `localStorage`. It now sets `verified: true` like the other paths (it used to omit it, so `ProtectedRoute` bounced the email path back to `/signin`). Google and Twitter paths are hard-coded users with `verified: true`. The verification code is the constant `123456`. | Still mock auth: a real fix needs an identity provider or server sessions. |
 | Frontend to backend | Zero `fetch` or `axios` calls in the hand-written source; `REACT_APP_BACKEND_URL` is set but unused. | Flagged. |
 | Backend | Stock FastAPI example: `GET /api/`, `POST /api/status`, `GET /api/status`. `@app.on_event("shutdown")` is deprecated in current FastAPI. | Flagged. |
 | Coverage of its own feature | Only 8 of 24 landing-page picks and 4 of 36 workspace picks have their own text; the rest silently fall back with no message. | Shown live on the dashboard. A one-line "sample not available" notice would be the cheap product fix; left to the Owner. |

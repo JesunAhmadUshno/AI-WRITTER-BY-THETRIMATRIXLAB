@@ -47,7 +47,6 @@ npm run build       # runs the check, then builds site/dist
 
 ## Known issues
 
-- Email sign-in never sets `verified`, so `ProtectedRoute` sends that user back to `/signin`; only the Google, Twitter and sign-up paths reach the dashboard.
 - The three starter workflows in `.github/workflows/` (`node.js.yml`, `npm-grunt.yml`, `npm-publish.yml`) expect a root `package.json` and Gruntfile that do not exist, so they fail if triggered.
 - `backend/.env` and `frontend/.env` are committed. They hold a local database URL and a preview host, no secrets, but belong in `.env.example` files.
 

@@ -34,7 +34,8 @@ export const AuthProvider = ({ children }) => {
           plan: 'free',
           wordsUsed: 150,
           wordsLimit: 500,
-          joinedDate: new Date().toISOString()
+          joinedDate: new Date().toISOString(),
+          verified: true
         };
         
         setUser(userData);

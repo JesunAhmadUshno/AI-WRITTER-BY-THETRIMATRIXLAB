@@ -62,7 +62,7 @@ assert.deepEqual(P.parseEndpoints(read('backend/server.py')).map((e) => `${e.met
 assert.deepEqual(P.parsePlans(read('frontend/src/components/PricingSection.jsx')).map((p) => `${p.name} ${p.price} ${p.quota}`),
   ['Free $0 500 words per month', 'Pro $29 50,000 words per month', 'Enterprise $99 Unlimited words']);
 const auth = P.parseAuth(read('frontend/src/contexts/AuthContext.jsx'));
-assert.deepEqual(auth.methods.map((m) => m.verified), [false, true, true]); // email sign-in never sets verified
+assert.deepEqual(auth.methods.map((m) => m.verified), [true, true, true]); // every sign-in path sets verified, so ProtectedRoute admits it
 assert.equal(auth.code, '123456');
 assert.equal(auth.acceptsAnyCredentials, true);
 

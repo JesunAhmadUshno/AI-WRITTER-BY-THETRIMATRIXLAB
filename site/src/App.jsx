@@ -404,7 +404,7 @@ function Honesty() {
   const mocked = [`Generation: ${SCRIPTED} scripted samples, typed by setInterval`, 'Auth: any non-empty email and password, stored in localStorage', 'Usage stats, documents list, testimonials, company stats', `Backend link: ${BACKEND_CALLS} calls from the UI`];
   const gaps = [
     ['No model integration', 'Needs a backend generation endpoint and a provider key; paid per call, so out of scope here.'],
-    ['Fake auth', 'Needs a real identity provider or server sessions; the email path cannot reach the dashboard at all.'],
+    ['Fake auth', 'Needs a real identity provider or server sessions; any non-empty email and password reaches the dashboard.'],
     ['No product tests', 'Added: the known-answer check. Still missing: component tests (CRA jest is wired but unused) and a backend test with a Mongo container.'],
     ['Broken starter CI', 'node.js.yml, npm-grunt.yml and npm-publish.yml expect a root package.json and Gruntfile that do not exist. Flagged, not deleted.'],
   ];
