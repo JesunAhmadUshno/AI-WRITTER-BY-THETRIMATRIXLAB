@@ -14,6 +14,7 @@ const ChatbotWidget = ({ isOpen, onToggle }) => {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef(null);
+  const nextId = useRef(2); // not messages.length: a second send before the bot replies would reuse a pending id
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -54,7 +55,7 @@ const ChatbotWidget = ({ isOpen, onToggle }) => {
     if (!text.trim()) return;
 
     const userMessage = {
-      id: messages.length + 1,
+      id: nextId.current++,
       text,
       isBot: false,
       timestamp: new Date()
@@ -67,7 +68,7 @@ const ChatbotWidget = ({ isOpen, onToggle }) => {
     // Simulate bot typing delay
     setTimeout(() => {
       const botResponse = {
-        id: messages.length + 2,
+        id: nextId.current++,
         text: getResponse(text),
         isBot: true,
         timestamp: new Date()

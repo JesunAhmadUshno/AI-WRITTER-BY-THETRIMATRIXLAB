@@ -75,7 +75,7 @@ assert.equal(own.length, 20);
 const sum = (fs_) => fs_.reduce((n, f) => n + P.lineCount(read(f)), 0);
 assert.equal(P.lineCount(read('frontend/src/components/dashboard/AccountSettings.jsx')), 419);
 assert.equal(P.lineCount(read('backend/server.py')), 75);
-assert.equal(sum(own), 3891);
+assert.equal(sum(own), 3892);
 assert.equal(P.countBackendCalls([...own, 'frontend/src/App.js', 'frontend/src/contexts/AuthContext.jsx', 'frontend/src/mock.js'].map(read)), 0);
 assert.equal(sum(ui) > 0, true);
 
