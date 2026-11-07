@@ -78,3 +78,7 @@ agenthub/agents/youtube/db
 
 # Mobile development
 android-sdk/ 
+# Live dashboard build outputs
+site/node_modules/
+site/dist/
+site/.rubric/
