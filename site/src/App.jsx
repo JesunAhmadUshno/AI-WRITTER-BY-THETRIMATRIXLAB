@@ -405,8 +405,8 @@ function Honesty() {
   const gaps = [
     ['No model integration', 'Needs a backend generation endpoint and a provider key; paid per call, so out of scope here.'],
     ['Fake auth', 'Needs a real identity provider or server sessions; any non-empty email and password reaches the dashboard.'],
-    ['No product tests', 'Added: the known-answer check. Still missing: component tests (CRA jest is wired but unused) and a backend test with a Mongo container.'],
-    ['Broken starter CI', 'node.js.yml, npm-grunt.yml and npm-publish.yml expect a root package.json and Gruntfile that do not exist. Flagged, not deleted.'],
+    ['Few product tests', 'Added: the known-answer check and a few jest tests for sign-in and the chatbot. Still missing: broad component tests and a backend test with a Mongo container.'],
+    ['Starter CI', 'node.js.yml now tests and builds frontend/ and site/; npm-grunt.yml and npm-publish.yml skip their steps until a root package.json or Gruntfile exists.'],
   ];
   return (
     <section id="honesty" className="card window reveal" data-title="research-review.md — honesty and gaps">

@@ -22,7 +22,9 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    # The repo has no root package.json or Gruntfile, so this only runs once one is added.
     - name: Build
+      if: hashFiles('Gruntfile.js') != ''
       run: |
         npm install
         grunt

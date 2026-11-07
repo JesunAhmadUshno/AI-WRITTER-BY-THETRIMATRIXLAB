@@ -15,8 +15,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      # The repo has no root package.json, so these steps only run once one is added.
       - run: npm ci
+        if: hashFiles('package.json') != ''
       - run: npm test
+        if: hashFiles('package.json') != ''
 
   publish-npm:
     needs: build
@@ -28,6 +31,8 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+        if: hashFiles('package.json') != ''
       - run: npm publish
+        if: hashFiles('package.json') != ''
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}

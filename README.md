@@ -45,9 +45,15 @@ npm test            # known-answer check: parses the source and asserts the fact
 npm run build       # runs the check, then builds site/dist
 ```
 
+Frontend tests and the workflow check (Node 20+):
+
+```bash
+cd frontend && yarn install --frozen-lockfile && CI=true yarn test --watchAll=false
+node --test tests/workflows.test.mjs   # from the repo root
+```
+
 ## Known issues
 
-- The three starter workflows in `.github/workflows/` (`node.js.yml`, `npm-grunt.yml`, `npm-publish.yml`) expect a root `package.json` and Gruntfile that do not exist, so they fail if triggered.
 - `backend/.env` and `frontend/.env` are committed. They hold a local database URL and a preview host, no secrets, but belong in `.env.example` files.
 
 A full engineering review, with what each remaining gap would take to close, is in [docs/research-review.md](docs/research-review.md).
