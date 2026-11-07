@@ -49,12 +49,13 @@ const ChatbotWidget = ({ isOpen, onToggle }) => {
     }
   };
 
-  const handleSendMessage = async () => {
-    if (!inputValue.trim()) return;
+  // Takes the text explicitly: a quick button cannot rely on inputValue, which its setInputValue has not updated yet.
+  const handleSendMessage = (text = inputValue) => {
+    if (!text.trim()) return;
 
     const userMessage = {
       id: messages.length + 1,
-      text: inputValue,
+      text,
       isBot: false,
       timestamp: new Date()
     };
@@ -67,7 +68,7 @@ const ChatbotWidget = ({ isOpen, onToggle }) => {
     setTimeout(() => {
       const botResponse = {
         id: messages.length + 2,
-        text: getResponse(inputValue),
+        text: getResponse(text),
         isBot: true,
         timestamp: new Date()
       };
@@ -92,8 +93,7 @@ const ChatbotWidget = ({ isOpen, onToggle }) => {
   ];
 
   const handleQuickButton = (action) => {
-    setInputValue(action);
-    setTimeout(() => handleSendMessage(), 100);
+    handleSendMessage(action);
   };
 
   return (
@@ -268,7 +268,7 @@ const ChatbotWidget = ({ isOpen, onToggle }) => {
                 rows={1}
               />
               <button
-                onClick={handleSendMessage}
+                onClick={() => handleSendMessage()}
                 disabled={!inputValue.trim()}
                 style={{
                   background: inputValue.trim() ? 'var(--text-primary)' : 'var(--border-primary)',

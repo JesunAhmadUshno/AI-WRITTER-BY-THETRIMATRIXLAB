@@ -56,7 +56,7 @@ export function parseRouter(src) {
     reply: m[2], keywords: [...m[1].matchAll(/includes\('([^']+)'\)/g)].map((k) => k[1]),
   }));
   const fallback = body.match(/else \{\s*return chatbotResponses\.(\w+)/)[1];
-  const delay = +src.match(/text: getResponse\(inputValue\)[\s\S]*?\}, (\d+)\);/)[1];
+  const delay = +src.match(/text: getResponse\(\w+\)[\s\S]*?\}, (\d+)\);/)[1];
   return { branches, fallback, delay };
 }
 
