@@ -118,7 +118,7 @@ export default function App() {
 function Hero() {
   const roles = GEN.demo.roles.length;
   return (
-    <header className="card hero window" id="top" data-title="AI-WRITTER-BY-THETRIMATRIXLAB — README">
+    <header className="card hero window" id="top" data-title="TheTrimatrixLab writer — README">
       <div className="head">
         <p className="eyebrow">Engineering read · front-end prototype</p>
         <span className="pill warn">● Scripted output, no model</span>
